@@ -12,16 +12,26 @@ public class BasePlayerRawData {
 
     @JsonProperty("act")
     private boolean active;
+
     @JsonProperty("mh")
     private int maxHealth;
+
     @JsonProperty("ah")
     private int health;
+
     @JsonProperty("me")
     private int maxMana;
+
     @JsonProperty("ae")
     private int mana;
+
     @JsonProperty("cast")
-    private boolean casting;
+    private CastType casting;
+
+    @JsonProperty("castTimeRem")
+    private double castingTimeRemaining;
+
+
     @JsonProperty("run")
     private boolean isRunning;
 

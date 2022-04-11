@@ -1,5 +1,6 @@
 package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
 
+import cz.samelanius.rotator.bot.core.class_packages.CastType;
 import lombok.Data;
 
 @Data
@@ -10,7 +11,10 @@ public class PlayerData {
     private Resource rage = new Resource();
 
     private boolean isActive;
-    private boolean isCasting;
+
+    private CastType casting;
+    private double castingTimeRemaining;
+
     private boolean isRunning;
 
     private boolean isPotionCD;

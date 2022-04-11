@@ -2,6 +2,7 @@ package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import cz.samelanius.rotator.bot.core.class_packages.AbstractClassPackage;
+import cz.samelanius.rotator.bot.core.class_packages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
@@ -27,8 +28,14 @@ public class BalancedDruidPackage extends AbstractClassPackage {
         player = parser.parseData(data, player);
         logComData(data,player);
 
-        if (!player.isActive()) return ResultAction.noAction("Neni aktivni");
-        if (player.isCasting()) return ResultAction.noAction("Casti");
+        if (!player.isActive()) {
+            return ResultAction.noAction("Neni aktivni");
+        }
+        if (!player.getCasting().equals(CastType.NONE)) {
+            if(player.getCastingTimeRemaining() > 0.3) {
+                return ResultAction.noAction("Casti");
+            }
+        }
 
         if (player.getSpellInsectSwarm().isCastable()) {
             return ResultAction.keyPress(INSECT_SWARM_KEY);
@@ -53,7 +60,6 @@ public class BalancedDruidPackage extends AbstractClassPackage {
         return ResultAction.noAction("Konec stromu");
 
     }
-
 
     @Override
     public void unload() {

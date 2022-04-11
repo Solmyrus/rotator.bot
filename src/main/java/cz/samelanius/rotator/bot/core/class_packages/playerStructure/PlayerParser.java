@@ -3,10 +3,9 @@ package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.samelanius.rotator.bot.core.class_packages.BasePlayerRawData;
+import cz.samelanius.rotator.bot.core.class_packages.CastType;
 import cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidPlayerData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
-
-import java.awt.image.BufferedImage;
 
 public class PlayerParser {
     protected ObjectMapper objectMapper = new ObjectMapper();
@@ -26,9 +25,9 @@ public class PlayerParser {
         return parseBaseData(data, new BalancedDruidPlayerData());
     }
 
-    public PlayerData parseBaseData(BasePlayerRawData data, BalancedDruidPlayerData playerData) {
+    public PlayerData parseBaseData(BasePlayerRawData data, PlayerData playerData) {
         playerData.setActive(data.isActive());
-        playerData.setCasting(data.isCasting());
+        playerData.setCasting(data.getCasting());
         playerData.setRunning(data.isRunning());
         playerData.setPotionCD(data.isPotionCD());
 
@@ -46,4 +45,5 @@ public class PlayerParser {
 
         return playerData;
     }
+
 }

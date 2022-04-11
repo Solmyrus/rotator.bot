@@ -1,12 +1,22 @@
 package cz.samelanius.rotator.bot.core.communication.screenparsing;
 
+import com.google.common.eventbus.EventBus;
+import cz.samelanius.rotator.bot.events.EventBusHolder;
+import cz.samelanius.rotator.bot.events.LogMessage;
+import cz.samelanius.rotator.bot.events.MessageLevel;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ScreenController {
+    private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+    private EventBus bus = EventBusHolder.getEventBus();
+
 
     private final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
     private final Dimension MAIN_DISPLAY = TOOLKIT.getScreenSize();
@@ -134,7 +144,8 @@ public class ScreenController {
     }
 
     public void pressAndReleaseKey(int keyCode) {
-        System.out.println("mackam: " + keyCode);
+        System.out.println(sdf.format(new Date()) +  " mackam: " + keyCode);
+
         robot.keyPress(keyCode);
         robot.keyRelease(keyCode);
     }
