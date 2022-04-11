@@ -1,8 +1,5 @@
 package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerData;
 import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerParser;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 
@@ -21,6 +18,12 @@ public class BalancedDruidParser extends PlayerParser {
         playerData.getSpellStarFire().setConditions(data.isStarfireEnabled(), data.isStarfirePossible());
         playerData.getSpellInsectSwarm().setConditions(data.isInsectswarmEnabled(), data.isInsectswarmPossible());
         playerData.getSpellFaerieFire().setConditions(data.isFfEnabled(), data.isFaerieFirePossible());
+
+        playerData.setActivateManaPotion(data.isActivateManaPotion());
+        playerData.setActivateDarkRune(data.isActivateDarkRune());
+        playerData.setActivateTrinket(data.isActivateTrinket());
+        playerData.setActivateDrums(data.isActivateDrums());
+        playerData.setActivateInnervate(data.isActivateInnervate());
 
         playerData.setDarkRuneCD(data.isDarkRuneCD());
         playerData.setRunningModeEnable(data.isRunningModeEnabled());

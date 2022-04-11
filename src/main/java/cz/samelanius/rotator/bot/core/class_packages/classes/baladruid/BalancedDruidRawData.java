@@ -40,4 +40,19 @@ public class BalancedDruidRawData extends BasePlayerRawData {
 
     @JsonProperty("darkRuneCD")
     private boolean darkRuneCD;
+
+    @JsonProperty("amp")
+    private boolean activateManaPotion;
+
+    @JsonProperty("adr")
+    private boolean activateDarkRune;
+
+    @JsonProperty("at")
+    private boolean activateTrinket;
+
+    @JsonProperty("ad")
+    private boolean activateDrums;
+
+    @JsonProperty("ai")
+    private boolean activateInnervate;
 }

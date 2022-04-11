@@ -18,6 +18,12 @@ public class BalancedDruidPackage extends AbstractClassPackage {
     private final static int MOON_FIRE_KEY = KeyEvent.VK_NUMPAD1;
     private final static int STAR_FIRE_KEY = KeyEvent.VK_NUMPAD2;
 
+    private final static int MANA_POTION_KEY = KeyEvent.VK_NUMPAD5;
+    private final static int DARK_RUNE_KEY = KeyEvent.VK_NUMPAD6;
+    private final static int TRINKET_KEY = KeyEvent.VK_NUMPAD7;
+    private final static int DRUMS_KEY = KeyEvent.VK_NUMPAD8;
+    private final static int INNERVATE_KEY = KeyEvent.VK_NUMPAD9;
+
     @Override
     public void load() {
         player = new BalancedDruidPlayerData();
@@ -27,6 +33,12 @@ public class BalancedDruidPackage extends AbstractClassPackage {
     public ResultAction update(RawScreenData data) {
         player = parser.parseData(data, player);
         logComData(data,player);
+
+        if(player.isActivateManaPotion()) return ResultAction.keyPress(MANA_POTION_KEY);
+        if(player.isActivateDarkRune()) return ResultAction.keyPress(DARK_RUNE_KEY);
+        if(player.isActivateTrinket()) return ResultAction.keyPress(TRINKET_KEY);
+        if(player.isActivateDrums()) return ResultAction.keyPress(DRUMS_KEY);
+        if(player.isActivateInnervate()) return ResultAction.keyPress(INNERVATE_KEY);
 
         if (!player.isActive()) {
             return ResultAction.noAction("Neni aktivni");
