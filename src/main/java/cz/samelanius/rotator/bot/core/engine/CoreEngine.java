@@ -38,7 +38,8 @@ public class CoreEngine {
         executorService.scheduleWithFixedDelay(
                 () -> {
                     if(!run) {
-                        this.stop();
+                        executorService.shutdown();
+                        System.out.println("Ukoncuji vlakno");
                         classPackage.unload();
                     }
 

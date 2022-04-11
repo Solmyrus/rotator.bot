@@ -58,6 +58,7 @@ public class App extends Application  {
         String sValue = (String) value;
 
         if(sValue.equals("BalanceDruid")) return packageHolder.getBalancedDruidPackage();
+        if(sValue.equals("ProtWar")) return packageHolder.getProtWarPackage();
         return null;
     }
 

@@ -37,6 +37,13 @@ public class PlayerParser {
         playerData.getMana().setValue(data.getMana());
         playerData.getMana().setMaxValue(data.getMaxMana());
 
+        playerData.getRage().setValue(data.getRage());
+        playerData.getRage().setMaxValue(data.getMaxRage());
+
+        playerData.getEnergy().setValue(data.getEnergy());
+        playerData.getEnergy().setMaxValue(data.getMaxEnergy());
+
+
         playerData.getEnergy().setValue(0);
         playerData.getEnergy().setMaxValue(100);
 

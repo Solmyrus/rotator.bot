@@ -19,11 +19,23 @@ public class BasePlayerRawData {
     @JsonProperty("ah")
     private int health;
 
-    @JsonProperty("me")
+    @JsonProperty("maxMana")
     private int maxMana;
 
-    @JsonProperty("ae")
+    @JsonProperty("mana")
     private int mana;
+
+    @JsonProperty("maxRage")
+    private int maxRage;
+
+    @JsonProperty("rage")
+    private int rage;
+
+    @JsonProperty("maxEnergy")
+    private int maxEnergy;
+
+    @JsonProperty("energy")
+    private int energy;
 
     @JsonProperty("cast")
     private CastType casting;
