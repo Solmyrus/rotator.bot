@@ -24,6 +24,7 @@ public class BalancedDruidParser extends PlayerParser {
         playerData.setActivateTrinket(data.isActivateTrinket());
         playerData.setActivateDrums(data.isActivateDrums());
         playerData.setActivateInnervate(data.isActivateInnervate());
+        playerData.setActivateDestructionPotion(data.isActivateDestructionPotion());
 
         playerData.setDarkRuneCD(data.isDarkRuneCD());
         playerData.setRunningModeEnable(data.isRunningModeEnabled());

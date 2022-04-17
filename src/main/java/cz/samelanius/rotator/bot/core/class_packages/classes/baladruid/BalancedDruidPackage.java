@@ -22,7 +22,9 @@ public class BalancedDruidPackage extends AbstractClassPackage {
     private final static int DARK_RUNE_KEY = KeyEvent.VK_NUMPAD6;
     private final static int TRINKET_KEY = KeyEvent.VK_NUMPAD7;
     private final static int DRUMS_KEY = KeyEvent.VK_NUMPAD8;
+
     private final static int INNERVATE_KEY = KeyEvent.VK_NUMPAD9;
+    private final static int DESTRUCTION_POTION_KEY = KeyEvent.VK_BACK_SLASH;
 
     @Override
     public void load() {
@@ -39,6 +41,7 @@ public class BalancedDruidPackage extends AbstractClassPackage {
         if(player.isActivateTrinket()) return ResultAction.keyPress(TRINKET_KEY);
         if(player.isActivateDrums()) return ResultAction.keyPress(DRUMS_KEY);
         if(player.isActivateInnervate()) return ResultAction.keyPress(INNERVATE_KEY);
+        if(player.isActivateDestructionPotion()) return ResultAction.keyPress(DESTRUCTION_POTION_KEY);
 
         if (!player.isActive()) {
             return ResultAction.noAction("Neni aktivni");
