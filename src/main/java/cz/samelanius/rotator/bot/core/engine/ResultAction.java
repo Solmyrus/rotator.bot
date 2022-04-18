@@ -19,11 +19,22 @@ public class ResultAction {
         ResultAction action = new ResultAction();
         action.setType(ActionType.KEY_PRESS_ACTION);
         action.setKeyCode(keyCode);
+        action.setModificatorKeyCode(-1);
+        return action;
+    }
+
+
+    public static ResultAction keyPress(int keyCode, int modificatorKeyCode) {
+        ResultAction action = new ResultAction();
+        action.setType(ActionType.KEY_PRESS_ACTION);
+        action.setKeyCode(keyCode);
+        action.setModificatorKeyCode(modificatorKeyCode);
         return action;
     }
 
     private ActionType type;
     private int keyCode;
+    private int modificatorKeyCode;
     private String detailMessage;
 
 

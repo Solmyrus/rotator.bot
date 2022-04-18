@@ -51,7 +51,7 @@ public class CoreEngine {
                             case WAIT_ACTION:
                                 break;
                             case KEY_PRESS_ACTION:
-                                screenController.pressAndReleaseKey(result.getKeyCode());
+                                screenController.pressAndReleaseKey(result.getKeyCode(), result.getModificatorKeyCode());
                                 break;
                         }
                     } catch (Exception e) {

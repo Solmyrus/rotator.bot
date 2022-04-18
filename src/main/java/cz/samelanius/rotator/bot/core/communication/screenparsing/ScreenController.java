@@ -2,8 +2,6 @@ package cz.samelanius.rotator.bot.core.communication.screenparsing;
 
 import com.google.common.eventbus.EventBus;
 import cz.samelanius.rotator.bot.events.EventBusHolder;
-import cz.samelanius.rotator.bot.events.LogMessage;
-import cz.samelanius.rotator.bot.events.MessageLevel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -143,10 +141,12 @@ public class ScreenController {
         return new RGBColor(red, green, blue);
     }
 
-    public void pressAndReleaseKey(int keyCode) {
-        System.out.println(sdf.format(new Date()) +  " mackam: " + keyCode);
+    public void pressAndReleaseKey(int keyCode, int modificatorKeyCode) {
+        System.out.println(sdf.format(new Date()) +  " mackam: " + keyCode + " " + modificatorKeyCode);
 
+        if(modificatorKeyCode > 0) robot.keyPress(modificatorKeyCode);
         robot.keyPress(keyCode);
         robot.keyRelease(keyCode);
+        if(modificatorKeyCode > 0) robot.keyRelease(modificatorKeyCode);
     }
 }

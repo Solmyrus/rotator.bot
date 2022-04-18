@@ -24,7 +24,9 @@ public class BalancedDruidPackage extends AbstractClassPackage {
     private final static int DRUMS_KEY = KeyEvent.VK_NUMPAD8;
 
     private final static int INNERVATE_KEY = KeyEvent.VK_NUMPAD9;
-    private final static int DESTRUCTION_POTION_KEY = KeyEvent.VK_BACK_SLASH;
+
+    private final static int DESTRUCTION_POTION_KEY = KeyEvent.VK_NUMPAD1;
+    private final static int MODIFICATOR_KEY_CODE = KeyEvent.VK_CONTROL;
 
     @Override
     public void load() {
@@ -36,12 +38,7 @@ public class BalancedDruidPackage extends AbstractClassPackage {
         player = parser.parseData(data, player);
         logComData(data,player);
 
-        if(player.isActivateManaPotion()) return ResultAction.keyPress(MANA_POTION_KEY);
-        if(player.isActivateDarkRune()) return ResultAction.keyPress(DARK_RUNE_KEY);
-        if(player.isActivateTrinket()) return ResultAction.keyPress(TRINKET_KEY);
-        if(player.isActivateDrums()) return ResultAction.keyPress(DRUMS_KEY);
-        if(player.isActivateInnervate()) return ResultAction.keyPress(INNERVATE_KEY);
-        if(player.isActivateDestructionPotion()) return ResultAction.keyPress(DESTRUCTION_POTION_KEY);
+
 
         if (!player.isActive()) {
             return ResultAction.noAction("Neni aktivni");
@@ -51,6 +48,13 @@ public class BalancedDruidPackage extends AbstractClassPackage {
                 return ResultAction.noAction("Casti");
             }
         }
+
+        if(player.isActivateManaPotion()) return ResultAction.keyPress(MANA_POTION_KEY);
+        if(player.isActivateDarkRune()) return ResultAction.keyPress(DARK_RUNE_KEY);
+        if(player.isActivateTrinket()) return ResultAction.keyPress(TRINKET_KEY);
+        if(player.isActivateDrums()) return ResultAction.keyPress(DRUMS_KEY);
+        if(player.isActivateInnervate()) return ResultAction.keyPress(INNERVATE_KEY);
+        if(player.isActivateDestructionPotion()) return ResultAction.keyPress(DESTRUCTION_POTION_KEY, MODIFICATOR_KEY_CODE);
 
         if (player.getSpellInsectSwarm().isCastable()) {
             return ResultAction.keyPress(INSECT_SWARM_KEY);
