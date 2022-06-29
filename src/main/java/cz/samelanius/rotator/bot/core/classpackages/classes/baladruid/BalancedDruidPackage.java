@@ -1,7 +1,7 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.class_packages.AbstractClassPackage;
-import cz.samelanius.rotator.bot.core.class_packages.CastType;
+import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
+import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
@@ -11,18 +11,19 @@ public class BalancedDruidPackage extends AbstractClassPackage {
 
     private BalancedDruidParser parser = new BalancedDruidParser();
 
-    private BalancedDruidPlayerData player;
 
     private BalancedDruidStrategyStandard standardStrategy = new BalancedDruidStrategyStandard();
 
     private BalancedDruidStrategyFastAdd fastAddStrategy = new BalancedDruidStrategyFastAdd();
 
     @Override
-    public void load() {}
+    public void load() {
+        // Nothing to load.
+    }
 
     @Override
     public ResultAction update(RawScreenData data) {
-        player = parser.parseData(data);
+        BalancedDruidPlayerData player = parser.parseData(data);
         if(player == null) return ResultAction.noAction();
 
         logComData(data,player);
@@ -31,10 +32,8 @@ public class BalancedDruidPackage extends AbstractClassPackage {
             return ResultAction.noAction("Neni aktivni");
         }
 
-        if (!player.getCasting().equals(CastType.NONE)) {
-            if(player.getCastingTimeRemaining() > 0.3) {
+        if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
                 return ResultAction.noAction("Casti");
-            }
         }
 
         if(fastAddStrategy.isOnWhitelist(player.getTargetName())) return fastAddStrategy.update(player);
@@ -44,7 +43,7 @@ public class BalancedDruidPackage extends AbstractClassPackage {
 
     @Override
     public void unload() {
-
+        // Nothing to unload.
     }
 
 }

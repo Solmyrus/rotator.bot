@@ -1,7 +1,7 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import cz.samelanius.rotator.bot.core.class_packages.BasePlayerRawData;
+import cz.samelanius.rotator.bot.core.classpackages.BasePlayerRawData;
 import lombok.Data;
 
 @Data

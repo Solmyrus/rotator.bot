@@ -1,10 +1,9 @@
-package cz.samelanius.rotator.bot.core.class_packages;
+package cz.samelanius.rotator.bot.core.classpackages;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.eventbus.EventBus;
-import cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidPlayerData;
-import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerData;
+import cz.samelanius.rotator.bot.core.classpackages.playerStructure.PlayerData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.events.CommunicationDataEvent;
 import cz.samelanius.rotator.bot.events.EventBusHolder;

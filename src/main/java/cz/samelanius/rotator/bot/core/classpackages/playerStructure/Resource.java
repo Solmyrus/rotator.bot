@@ -1,8 +1,6 @@
-package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
+package cz.samelanius.rotator.bot.core.classpackages.playerStructure;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 
 @Data
 public class Resource {

@@ -1,4 +1,4 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.shadowPriest;
+package cz.samelanius.rotator.bot.core.classpackages.classes.shadowPriest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,9 +1,9 @@
-package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
+package cz.samelanius.rotator.bot.core.classpackages.playerStructure;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cz.samelanius.rotator.bot.core.class_packages.BasePlayerRawData;
-import cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidPlayerData;
+import cz.samelanius.rotator.bot.core.classpackages.BasePlayerRawData;
+import cz.samelanius.rotator.bot.core.classpackages.classes.baladruid.BalancedDruidPlayerData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 
 public class PlayerParser {

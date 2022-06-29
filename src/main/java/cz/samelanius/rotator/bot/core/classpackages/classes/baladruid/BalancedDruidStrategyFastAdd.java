@@ -1,12 +1,11 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
-import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidKeybindigs.*;
+import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid.BalancedDruidKeybindigs.*;
 
 public class BalancedDruidStrategyFastAdd implements BalancedDruidStrategy {
     private List<String> mobWhitelist = new ArrayList<>();

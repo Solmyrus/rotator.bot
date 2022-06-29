@@ -13,8 +13,6 @@ import java.util.Date;
 
 public class ScreenController {
     private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
-    private EventBus bus = EventBusHolder.getEventBus();
-
 
     private final Toolkit TOOLKIT = Toolkit.getDefaultToolkit();
     private final Dimension MAIN_DISPLAY = TOOLKIT.getScreenSize();
@@ -22,7 +20,6 @@ public class ScreenController {
 
     private Rectangle selectedArea;
     private int squareXCount;
-    private int squareYCount;
 
     public ScreenController() {
         try {
@@ -50,7 +47,7 @@ public class ScreenController {
 
     private String loadDataFromImage() {
         BufferedImage image = robot.createScreenCapture(selectedArea);
-        String data = "";
+        StringBuilder data = new StringBuilder();
 
         double squareWidth = (double) image.getWidth() / (double) squareXCount;
 
@@ -60,19 +57,17 @@ public class ScreenController {
 
             RGBColor color = loadColor(image, x, y);
             if (color.getR() != 0) {
-                data += (char) color.getR();
+                data.append((char) color.getR());
             }
             if (color.getG() != 0) {
-                data += (char) color.getG();
+                data.append((char) color.getG());
             }
             if (color.getB() != 0) {
-                data += (char) color.getB();
+                data.append((char) color.getB());
             }
-            //System.out.println("i: " + i + " x: " + x + " y: " + y +" RGB: " + color.getR() + " " + color.getG() +  " " + color.getB() + " - " + (char)color.getR() + " " + (char)color.getG() +  " " + (char)color.getB() );
         }
 
-
-        return data;
+        return data.toString();
     }
 
     private void prescanBoundaries() {

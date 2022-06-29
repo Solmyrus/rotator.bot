@@ -1,6 +1,6 @@
-package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
+package cz.samelanius.rotator.bot.core.classpackages.playerStructure;
 
-import cz.samelanius.rotator.bot.core.class_packages.CastType;
+import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import lombok.Data;
 
 @Data

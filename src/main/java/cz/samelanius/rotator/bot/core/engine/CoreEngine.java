@@ -1,7 +1,7 @@
 package cz.samelanius.rotator.bot.core.engine;
 
 import com.google.common.eventbus.EventBus;
-import cz.samelanius.rotator.bot.core.class_packages.ClassPackage;
+import cz.samelanius.rotator.bot.core.classpackages.ClassPackage;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.ScreenController;
 import cz.samelanius.rotator.bot.events.EventBusHolder;
@@ -13,9 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class CoreEngine {
 
     private ScreenController screenController = new ScreenController();
-    private ScheduledExecutorService executorService = null;
-    private long lastUpdate = 0;
-    private long UPDATE_DIFF = 100;
+    private static final long UPDATE_DIFF = 100;
     private boolean run;
 
     private EventBus eventBus = EventBusHolder.getEventBus();
@@ -30,7 +28,7 @@ public class CoreEngine {
         screenController.init(300,1);
 
         System.out.println("Starturji");
-        executorService = Executors.newScheduledThreadPool(1);
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         run = true;
 
         classPackage.load();

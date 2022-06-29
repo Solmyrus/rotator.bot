@@ -1,7 +1,7 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.protwar;
+package cz.samelanius.rotator.bot.core.classpackages.classes.protwar;
 
-import cz.samelanius.rotator.bot.core.class_packages.AbstractClassPackage;
-import cz.samelanius.rotator.bot.core.class_packages.CastType;
+import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
+import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
@@ -11,11 +11,11 @@ public class ProtWarPackage extends AbstractClassPackage {
     private ProtWarParser parser = new ProtWarParser();
     private ProtWarPlayerData player;
 
-    private final static int REVENGE_KEY = KeyEvent.VK_NUMPAD1;
-    private final static int SHIELD_BLOCK_KEY = KeyEvent.VK_NUMPAD3;
-    private final static int SHIELD_SLAM_KEY = KeyEvent.VK_NUMPAD2;
-    private final static int DEVASTATE_KEY = KeyEvent.VK_NUMPAD4;
-    private final static int HEROIC_STRIKE_KEY = KeyEvent.VK_NUMPAD5;
+    private static final int REVENGE_KEY = KeyEvent.VK_NUMPAD1;
+    private static final int SHIELD_BLOCK_KEY = KeyEvent.VK_NUMPAD3;
+    private static final int SHIELD_SLAM_KEY = KeyEvent.VK_NUMPAD2;
+    private static final int DEVASTATE_KEY = KeyEvent.VK_NUMPAD4;
+    private static final int HEROIC_STRIKE_KEY = KeyEvent.VK_NUMPAD5;
 
     @Override
     public void load() {
@@ -29,10 +29,8 @@ public class ProtWarPackage extends AbstractClassPackage {
 
         if (!player.isActive()) return ResultAction.noAction("Neaktivni");
 
-        if (!player.getCasting().equals(CastType.NONE)) {
-            if(player.getCastingTimeRemaining() > 0.3) {
+        if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
                 return ResultAction.noAction("Casti");
-            }
         }
 
         if (player.isPossibleShieldBlock()) {

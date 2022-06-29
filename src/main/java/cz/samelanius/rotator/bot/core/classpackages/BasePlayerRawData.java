@@ -1,4 +1,4 @@
-package cz.samelanius.rotator.bot.core.class_packages;
+package cz.samelanius.rotator.bot.core.classpackages;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

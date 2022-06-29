@@ -1,6 +1,6 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerParser;
+import cz.samelanius.rotator.bot.core.classpackages.playerStructure.PlayerParser;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 
 public class BalancedDruidParser extends PlayerParser {

@@ -1,6 +1,6 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.protwar;
+package cz.samelanius.rotator.bot.core.classpackages.classes.protwar;
 
-import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerData;
+import cz.samelanius.rotator.bot.core.classpackages.playerStructure.PlayerData;
 import lombok.Data;
 
 @Data

@@ -1,6 +1,5 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
 public interface BalancedDruidStrategy {

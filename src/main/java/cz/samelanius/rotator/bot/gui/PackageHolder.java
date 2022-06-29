@@ -1,7 +1,7 @@
 package cz.samelanius.rotator.bot.gui;
 
-import cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidPackage;
-import cz.samelanius.rotator.bot.core.class_packages.classes.protwar.ProtWarPackage;
+import cz.samelanius.rotator.bot.core.classpackages.classes.baladruid.BalancedDruidPackage;
+import cz.samelanius.rotator.bot.core.classpackages.classes.protwar.ProtWarPackage;
 import lombok.Getter;
 
 public class PackageHolder {

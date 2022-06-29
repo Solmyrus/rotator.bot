@@ -1,15 +1,10 @@
-package cz.samelanius.rotator.bot.core.class_packages.classes.baladruid;
+package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidKeybindigs.*;
+import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid.BalancedDruidKeybindigs.*;
 
 public class BalancedDruidStrategyStandard implements BalancedDruidStrategy {
-
 
     @Override
     public ResultAction update(BalancedDruidPlayerData player) {

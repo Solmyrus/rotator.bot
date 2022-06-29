@@ -1,4 +1,4 @@
-package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
+package cz.samelanius.rotator.bot.core.classpackages.playerStructure;
 
 import lombok.Setter;
 
