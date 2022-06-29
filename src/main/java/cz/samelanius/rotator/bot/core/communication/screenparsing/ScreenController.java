@@ -71,6 +71,7 @@ public class ScreenController {
             //System.out.println("i: " + i + " x: " + x + " y: " + y +" RGB: " + color.getR() + " " + color.getG() +  " " + color.getB() + " - " + (char)color.getR() + " " + (char)color.getG() +  " " + (char)color.getB() );
         }
 
+
         return data;
     }
 

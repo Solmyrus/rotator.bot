@@ -18,4 +18,8 @@ public class PlayerData {
     private boolean isRunning;
 
     private boolean isPotionCD;
+
+    private int targetHealth;
+    private String targetName;
+
 }

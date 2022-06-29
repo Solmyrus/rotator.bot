@@ -3,7 +3,6 @@ package cz.samelanius.rotator.bot.core.class_packages.playerStructure;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.samelanius.rotator.bot.core.class_packages.BasePlayerRawData;
-import cz.samelanius.rotator.bot.core.class_packages.CastType;
 import cz.samelanius.rotator.bot.core.class_packages.classes.baladruid.BalancedDruidPlayerData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 
@@ -15,7 +14,6 @@ public class PlayerParser {
         try {
             return objectMapper.readValue(data.getRawData(), valueType);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             System.out.println("Nenaparsovano");
         }
         return null;
@@ -49,6 +47,11 @@ public class PlayerParser {
 
         playerData.getRage().setValue(0);
         playerData.getRage().setMaxValue(100);
+
+        playerData.setTargetHealth(data.getTargetHealth());
+        playerData.setTargetName(data.getTargetName());
+
+
 
         return playerData;
     }

@@ -4,12 +4,12 @@ import cz.samelanius.rotator.bot.core.class_packages.playerStructure.PlayerParse
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 
 public class BalancedDruidParser extends PlayerParser {
-    public BalancedDruidPlayerData parseData(RawScreenData data) {
-        return parseData(data, new BalancedDruidPlayerData());
-    }
 
-    public BalancedDruidPlayerData parseData(RawScreenData rawScreenData, BalancedDruidPlayerData playerData) {
+    public BalancedDruidPlayerData parseData(RawScreenData rawScreenData) {
         BalancedDruidRawData data = parseFromJson(rawScreenData, BalancedDruidRawData.class);
+        if(data == null) return null;
+
+        BalancedDruidPlayerData playerData = new BalancedDruidPlayerData();
 
         super.parseBaseData(data, playerData);
 
@@ -28,6 +28,8 @@ public class BalancedDruidParser extends PlayerParser {
 
         playerData.setDarkRuneCD(data.isDarkRuneCD());
         playerData.setRunningModeEnable(data.isRunningModeEnabled());
+
+
 
         return playerData;
 

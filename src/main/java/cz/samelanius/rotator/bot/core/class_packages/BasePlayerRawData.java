@@ -50,4 +50,11 @@ public class BasePlayerRawData {
     @JsonProperty("potionCD")
     private boolean potionCD;
 
+
+    @JsonProperty("th")
+    private int targetHealth;
+
+    @JsonProperty("tn")
+    private String targetName;
+
 }
