@@ -1,5 +1,6 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
+import cz.samelanius.rotator.bot.core.ThreatTools;
 import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
 import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
@@ -9,8 +10,9 @@ import cz.samelanius.rotator.bot.core.engine.ResultAction;
 
 public class BalancedDruidPackage extends AbstractClassPackage {
 
-    private BalancedDruidParser parser = new BalancedDruidParser();
+    public static String PACKAGE_ID = "bd_01";
 
+    private BalancedDruidParser parser = new BalancedDruidParser();
 
     private BalancedDruidStrategyStandard standardStrategy = new BalancedDruidStrategyStandard();
 
@@ -32,11 +34,13 @@ public class BalancedDruidPackage extends AbstractClassPackage {
             return ResultAction.noAction("Neni aktivni");
         }
 
+        if(player.isThreatLock() && !ThreatTools.isSafe(player, 100)) return ResultAction.noAction("Overaggro");
+
         if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
                 return ResultAction.noAction("Casti");
         }
 
-        if(fastAddStrategy.isOnWhitelist(player.getTargetName())) return fastAddStrategy.update(player);
+        if(fastAddStrategy.isOnWhitelist(player.getTarget().getTargetName())) return fastAddStrategy.update(player);
 
         return standardStrategy.update(player);
     }
@@ -45,5 +49,6 @@ public class BalancedDruidPackage extends AbstractClassPackage {
     public void unload() {
         // Nothing to unload.
     }
+
 
 }

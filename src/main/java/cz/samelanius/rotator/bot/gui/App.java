@@ -42,24 +42,9 @@ public class App extends Application  {
             engine.stop();
             rootPanel.getStartButton().setText("Start");
         } else {
-            ClassPackage classPackage = getSelectedPackage();
-            if(classPackage != null) {
-                engine.start(classPackage);
-                rootPanel.getStartButton().setText("Stop");
-            }
+            engine.start();
+            rootPanel.getStartButton().setText("Stop");
+
         }
     }
-
-    private ClassPackage getSelectedPackage() {
-        Object value = rootPanel.getComboBox().getValue();
-        if(value == null) return null;
-        String sValue = (String) value;
-
-        if(sValue.equals("BalanceDruid")) return packageHolder.getBalancedDruidPackage();
-        if(sValue.equals("ProtWar")) return packageHolder.getProtWarPackage();
-        return null;
-    }
-
-
-
 }

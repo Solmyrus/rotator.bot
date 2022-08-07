@@ -32,16 +32,12 @@ public class ScreenController {
 
     public void init(int squareXCount, int squareYCount) {
         this.squareXCount = squareXCount;
-        this.squareYCount = squareYCount;
-
         prescanBoundaries();
     }
 
     public RawScreenData readData() {
         RawScreenData data = new RawScreenData();
-
         data.setRawData(loadDataFromImage());
-
         return data;
     }
 

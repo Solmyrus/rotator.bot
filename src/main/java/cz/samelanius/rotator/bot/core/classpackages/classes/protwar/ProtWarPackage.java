@@ -8,6 +8,8 @@ import cz.samelanius.rotator.bot.core.engine.ResultAction;
 import java.awt.event.KeyEvent;
 
 public class ProtWarPackage extends AbstractClassPackage {
+    public static String PACKAGE_ID = "pw_01";
+
     private ProtWarParser parser = new ProtWarParser();
     private ProtWarPlayerData player;
 

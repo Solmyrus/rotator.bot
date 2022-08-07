@@ -24,7 +24,7 @@ public class BalancedDruidStrategyFastAdd implements BalancedDruidStrategy {
 
     @Override
     public ResultAction update(BalancedDruidPlayerData player) {
-        if (player.getTargetHealth() > 8_000) {
+        if (player.getTarget().getTargetHealth() > 8_000) {
             if (player.getSpellStarFire().isCastable()) return ResultAction.keyPress(STAR_FIRE_KEY);
         } else {
             if (player.getSpellRepeatableMoonFire().isCastable()) return ResultAction.keyPress(MOON_FIRE_KEY);

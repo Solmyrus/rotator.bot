@@ -19,7 +19,6 @@ public class PlayerData {
 
     private boolean isPotionCD;
 
-    private int targetHealth;
-    private String targetName;
+    private TargetData target = new TargetData();
 
 }

@@ -1,36 +1,39 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.shadowPriest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import cz.samelanius.rotator.bot.core.classpackages.BasePlayerRawData;
+import lombok.Data;
 
-public class SHPriestRawData {
+@Data
+public class SHPriestRawData extends BasePlayerRawData {
+    @JsonProperty("pmb")
+    private boolean mindBlastPossible;
+
+    @JsonProperty("pvt")
+    private boolean vampiricTouchPossible;
+
+    @JsonProperty("pswp")
+    private boolean shadowWordPainPossible;
+
+    @JsonProperty("pve")
+    private boolean vampiricEmbrancePossible;
+
     @JsonProperty("pmf")
-    private boolean moonfirePossible;
+    private boolean mindFlayPossible;
 
-    @JsonProperty("pmfd")
-    private boolean moonfireWithDotPossible;
+    @JsonProperty("amb")
+    private boolean mindBlastActive;
 
-    @JsonProperty("psf")
-    private boolean starfirePossible;
+    @JsonProperty("avt")
+    private boolean vampiricTouchActive;
 
-    @JsonProperty("pis")
-    private boolean insectswarmPossible;
+    @JsonProperty("aswp")
+    private boolean shadowWordPainActive;
 
-    @JsonProperty("pff")
-    private boolean faerieFirePossible;
+    @JsonProperty("ave")
+    private boolean vampiricEmbranceActive;
 
+    @JsonProperty("amf")
+    private boolean mindFlayActive;
 
-    @JsonProperty("emf")
-    private boolean moonfireEnabled;
-
-    @JsonProperty("esf")
-    private boolean starfireEnabled;
-
-    @JsonProperty("eis")
-    private boolean insectswarmEnabled;
-
-    @JsonProperty("eff")
-    private boolean ffEnabled;
-
-    @JsonProperty("rm")
-    private boolean runningModeEnabled;
 }

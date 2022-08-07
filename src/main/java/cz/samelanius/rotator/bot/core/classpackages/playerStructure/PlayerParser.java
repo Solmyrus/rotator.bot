@@ -14,6 +14,7 @@ public class PlayerParser {
         try {
             return objectMapper.readValue(data.getRawData(), valueType);
         } catch (JsonProcessingException e) {
+            e.printStackTrace();
             System.out.println("Nenaparsovano");
         }
         return null;
@@ -26,6 +27,7 @@ public class PlayerParser {
     public PlayerData parseBaseData(BasePlayerRawData data, PlayerData playerData) {
         playerData.setActive(data.isActive());
         playerData.setCasting(data.getCasting());
+        playerData.setCastingTimeRemaining(data.getCastingTimeRemaining());
         playerData.setRunning(data.isRunning());
         playerData.setPotionCD(data.isPotionCD());
 
@@ -42,18 +44,37 @@ public class PlayerParser {
         playerData.getEnergy().setMaxValue(data.getMaxEnergy());
 
 
-        playerData.getEnergy().setValue(0);
+        playerData.getEnergy().setValue(data.getEnergy());
         playerData.getEnergy().setMaxValue(100);
 
-        playerData.getRage().setValue(0);
+        playerData.getRage().setValue(data.getRage());
         playerData.getRage().setMaxValue(100);
 
-        playerData.setTargetHealth(data.getTargetHealth());
-        playerData.setTargetName(data.getTargetName());
+        playerData.getTarget().setTargetHealth(data.getTargetHealth());
+        playerData.getTarget().setTargetName(data.getTargetName());
 
+        playerData.getTarget().setTankingStatus(getTankingStatus(data.getTankingStatus()));
+        playerData.getTarget().setThreatValue(data.getThreatValue()/100);
+        playerData.getTarget().setThreatRawPercentage(data.getThreatRawPercentage());
+        playerData.getTarget().setThreatScaledPercentage(data.getThreatScaledPercentage());
+        playerData.getTarget().setTanking(data.isTanking());
 
+        if(playerData.getTarget().getThreatRawPercentage() > 0) {
+            playerData.getTarget().setThreatTank(playerData.getTarget().getThreatValue() / playerData.getTarget().getThreatRawPercentage() * 100);
+            playerData.getTarget().setThreatDiff(playerData.getTarget().getThreatTank() - playerData.getTarget().getThreatValue());
+        }
 
         return playerData;
+    }
+
+    private TankingStatus getTankingStatus(int tankingStatus) {
+        switch (tankingStatus) {
+            case 0: return TankingStatus.NOT_TANKING_LOW_THREAT;
+            case 1: return TankingStatus.NOT_TANKING_HIGH_THREAT;
+            case 2: return TankingStatus.TANKING_INSECURE;
+            case 3: return TankingStatus.TANKING_SECURE;
+        }
+        return null;
     }
 
 }

@@ -6,11 +6,12 @@ import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 public class BalancedDruidParser extends PlayerParser {
 
     public BalancedDruidPlayerData parseData(RawScreenData rawScreenData) {
+
         BalancedDruidRawData data = parseFromJson(rawScreenData, BalancedDruidRawData.class);
         if(data == null) return null;
 
-        BalancedDruidPlayerData playerData = new BalancedDruidPlayerData();
 
+        BalancedDruidPlayerData playerData = new BalancedDruidPlayerData();
         super.parseBaseData(data, playerData);
 
         playerData.getSpellMoonFire().setConditions(data.isMoonfireEnabled(), data.isMoonfireWithDotPossible());
@@ -28,8 +29,7 @@ public class BalancedDruidParser extends PlayerParser {
 
         playerData.setDarkRuneCD(data.isDarkRuneCD());
         playerData.setRunningModeEnable(data.isRunningModeEnabled());
-
-
+        playerData.setThreatLock(data.isThreatLock());
 
         return playerData;
 

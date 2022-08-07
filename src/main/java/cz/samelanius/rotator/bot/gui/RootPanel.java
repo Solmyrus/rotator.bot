@@ -70,6 +70,7 @@ public class RootPanel {
         comboBox = new ComboBox<>();
         comboBox.getItems().add("ProtWar");
         comboBox.getItems().add("BalanceDruid");
+        comboBox.getItems().add("FeralDruid");
 
         panel.getChildren().add(comboBox);
 

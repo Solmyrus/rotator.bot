@@ -57,4 +57,18 @@ public class BasePlayerRawData {
     @JsonProperty("tn")
     private String targetName;
 
+    @JsonProperty("thtIT")
+    private boolean isTanking;
+
+    @JsonProperty("thtS")
+    private int tankingStatus;
+
+    @JsonProperty("thtSP")
+    private double threatScaledPercentage;
+
+    @JsonProperty("thtRP")
+    private double threatRawPercentage;
+
+    @JsonProperty("thtV")
+    private double threatValue;
 }

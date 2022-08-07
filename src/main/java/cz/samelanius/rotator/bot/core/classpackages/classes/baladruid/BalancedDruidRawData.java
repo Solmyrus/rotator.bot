@@ -58,4 +58,7 @@ public class BalancedDruidRawData extends BasePlayerRawData {
 
     @JsonProperty("adp")
     private boolean activateDestructionPotion;
+
+    @JsonProperty("tl")
+    private boolean threatLock;
 }

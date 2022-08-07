@@ -21,4 +21,5 @@ public class BalancedDruidPlayerData extends PlayerData {
     private boolean activateInnervate;
     private boolean activateDestructionPotion;
 
+    private boolean threatLock;
 }
