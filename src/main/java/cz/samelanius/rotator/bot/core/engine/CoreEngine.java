@@ -85,6 +85,7 @@ public class CoreEngine {
         RawScreenData data = screenController.readData();
 
         try {
+            System.out.println(data.getRawData());
             SimplePackageRawData packageData = mapper.readValue(data.getRawData(), SimplePackageRawData.class);
             System.out.println("XXX: " + packageData.getProfile());
             classPackage = packageHolder.getPackage(packageData.getProfile());
