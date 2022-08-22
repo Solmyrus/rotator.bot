@@ -1,6 +1,9 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid_wotlk;
 
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.KeyPress;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
+
+import java.awt.event.KeyEvent;
 
 import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid_wotlk.BalancedDruidWotlkCasts.*;
 
@@ -12,7 +15,7 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
     private EclipseMode eclipseMode = EclipseMode.SOLAR;
 
     @Override
-    public ResultAction update(BalancedDruidWotlkPlayerData player) {
+    public ResultActions update(BalancedDruidWotlkPlayerData player) {
         if (player.isActivateManaPotion()) return castSpell(MANA_POTION);
         if (player.isActivateDarkRune()) return castSpell(DARK_RUNE);
         if (player.isActivateTrinket()) return castSpell(TRINKET);
@@ -21,34 +24,56 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
 
         if(player.getSpellFaerieFire().isCastable()) return castSpell(FAERIE_FIRE);
 
-        if(!player.isLunarEclipseAura() && !player.isSolarEclipseAura()) {
-            if(player.getSpellMoonFire().isCastable()) return castSpell(MOON_FIRE);
-            if(player.getSpellInsectSwarm().isCastable()) return castSpell(INSECT_SWARM);
-            if(player.getSpellStarFall().isCastable()) return castSpell(STAR_FALL);
+        resolveEclipseMode(player);
+
+        System.out.println(eclipseMode);
+
+        switch (eclipseMode) {
+            case LUNAR: {
+                if(player.getSpellMoonFire().isCastable()) return castSpell(MOON_FIRE);
+                if(player.getSpellStarFire().isCastable()) return castSpell(STAR_FIRE);
+                break;
+            }
+
+            case SOLAR: {
+                if(player.getSpellInsectSwarm().isCastable()) return castSpell(INSECT_SWARM);
+                if(player.getWrath().isCastable()) return castSpell(WRATH);
+                break;
+            }
+
+            case AFTER_LUNAR: {
+                if(player.getSpellMoonFire().isCastable()) return castSpell(MOON_FIRE);
+                if(player.getSpellStarFall().isCastable()) return castSpell(STAR_FALL);
+                if(player.getSpellStarFire().isCastable()) return castSpell(STAR_FIRE);
+                break;
+            }
+            case AFTER_SOLAR: {
+                if(player.getSpellInsectSwarm().isCastable()) return castSpell(INSECT_SWARM);
+                if(player.getSpellMoonFire().isCastable()) return castSpell(MOON_FIRE);
+                if(player.getSpellStarFall().isCastable()) return castSpell(STAR_FALL);
+                if(player.getWrath().isCastable()) return castSpell(WRATH);
+                break;
+            }
+
         }
-
-        if(player.isLunarEclipseAura()) eclipseMode = EclipseMode.LUNAR;
-        if(player.isSolarEclipseAura()) eclipseMode = EclipseMode.SOLAR;
-
-        if(eclipseMode.equals(EclipseMode.SOLAR)) {
-            if(player.getWrath().isCastable()) return castSpell(WRATH);
-        } else {
-            if(player.getSpellStarFire().isCastable()) return castSpell(STAR_FIRE);
-        }
-
-        return ResultAction.noAction("Neni co delat");
+        return ResultActions.noAction("Neni co delat");
     }
 
-    private ResultAction castSpell(BalancedDruidWotlkCasts cast) {
+    private void resolveEclipseMode(BalancedDruidWotlkPlayerData player) {
+        if(player.isLunarEclipseAura()) eclipseMode = EclipseMode.LUNAR;
+        if(player.isSolarEclipseAura()) eclipseMode = EclipseMode.SOLAR;
+        if(eclipseMode.equals(EclipseMode.LUNAR) && !player.isLunarEclipseAura()) eclipseMode = EclipseMode.AFTER_LUNAR;
+        if(eclipseMode.equals(EclipseMode.SOLAR) && !player.isSolarEclipseAura()) eclipseMode = EclipseMode.SOLAR;
+    }
 
-        if(System.currentTimeMillis() - CAST_CD < lastCast) {
-            return ResultAction.noAction("CastCD");
+    private ResultActions castSpell(BalancedDruidWotlkCasts cast) {
+        /*if(System.currentTimeMillis() - CAST_CD < lastCast) {
+            return ResultActions.noAction("CastCD");
         }
-
-        System.out.println("Castim: " + cast);
         lastCast = System.currentTimeMillis();
-        if(cast.getModifier() == null) return ResultAction.keyPress(cast.getKey());
-        else return ResultAction.keyPress(cast.getKey(), cast.getModifier());
+        */
+        return ResultActions.action(KeyPress.pressKey(cast.getKey()).withModificator(cast.getModifier()));
+
     }
 
 

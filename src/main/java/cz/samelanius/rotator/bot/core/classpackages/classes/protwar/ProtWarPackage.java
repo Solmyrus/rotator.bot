@@ -3,7 +3,8 @@ package cz.samelanius.rotator.bot.core.classpackages.classes.protwar;
 import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
 import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.KeyPress;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 import java.awt.event.KeyEvent;
 
@@ -25,42 +26,42 @@ public class ProtWarPackage extends AbstractClassPackage {
     }
 
     @Override
-    public ResultAction update(RawScreenData data) {
+    public ResultActions update(RawScreenData data) {
         player = parser.parseData(data, player);
         logComData(data,player);
 
-        if (!player.isActive()) return ResultAction.noAction("Neaktivni");
+        if (!player.isActive()) return ResultActions.noAction("Neaktivni");
 
         if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
-                return ResultAction.noAction("Casti");
+                return ResultActions.noAction("Casti");
         }
 
         if (player.isPossibleShieldBlock()) {
             System.out.println("Castim Shield block");
-            return ResultAction.keyPress(SHIELD_BLOCK_KEY);
+            return  ResultActions.action(KeyPress.pressKey(SHIELD_BLOCK_KEY));
         }
 
         if (player.isPossibleRevenge()) {
             System.out.println("Castim Revenge");
-            return ResultAction.keyPress(REVENGE_KEY);
+            return  ResultActions.action(KeyPress.pressKey(REVENGE_KEY));
         }
 
         if (player.isPossibleShieldSlam()) {
             System.out.println("Castim Shiel Slam");
-            return ResultAction.keyPress(SHIELD_SLAM_KEY);
+            return  ResultActions.action(KeyPress.pressKey(SHIELD_SLAM_KEY));
         }
 
         if (player.isPossibleDevastate()) {
             System.out.println("Castim Devastate");
-            return ResultAction.keyPress(DEVASTATE_KEY);
+            return  ResultActions.action(KeyPress.pressKey(DEVASTATE_KEY));
         }
 
         if (player.isPossibleHeroicStrike() && player.getRage().getValue() > 30) {
             System.out.println("Castim Heroic Strike");
-            return ResultAction.keyPress(HEROIC_STRIKE_KEY);
+            return ResultActions.action(KeyPress.pressKey(HEROIC_STRIKE_KEY));
         }
 
-        return ResultAction.noAction("Konec stromu");
+        return ResultActions.noAction("Konec stromu");
     }
 
     @Override

@@ -7,6 +7,8 @@ import cz.samelanius.rotator.bot.core.classpackages.ClassPackage;
 import cz.samelanius.rotator.bot.core.classpackages.SimplePackageRawData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.ScreenController;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 import cz.samelanius.rotator.bot.events.EventBusHolder;
 import cz.samelanius.rotator.bot.gui.PackageHolder;
 
@@ -51,22 +53,14 @@ public class CoreEngine {
                     if (!run) stopCore();
 
                     RawScreenData data = screenController.readData();
-                    ResultAction result = classPackage.update(data);
-
+                    ResultActions result = classPackage.update(data);
                     processResult(result);
 
                 }, 0, UPDATE_DIFF, TimeUnit.MILLISECONDS);
     }
 
-    private void processResult(ResultAction result) {
-        switch (result.getType()) {
-            case WAIT_ACTION:
-                System.out.println(result.getDetailMessage());
-                break;
-            case KEY_PRESS_ACTION:
-                screenController.pressAndReleaseKey(result.getKeyCode(), result.getModificatorKeyCode());
-                break;
-        }
+    private void processResult(ResultActions result) {
+        result.apply(screenController);
     }
 
     private void stopCore() {

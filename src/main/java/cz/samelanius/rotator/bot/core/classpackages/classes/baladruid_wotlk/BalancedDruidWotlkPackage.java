@@ -4,8 +4,7 @@ import cz.samelanius.rotator.bot.core.ThreatTools;
 import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
 import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
-
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 
 public class BalancedDruidWotlkPackage extends AbstractClassPackage {
@@ -23,20 +22,20 @@ public class BalancedDruidWotlkPackage extends AbstractClassPackage {
     }
 
     @Override
-    public ResultAction update(RawScreenData data) {
+    public ResultActions update(RawScreenData data) {
         BalancedDruidWotlkPlayerData player = parser.parseData(data);
-        if(player == null) return ResultAction.noAction();
+        if(player == null) return ResultActions.noAction();
 
         logComData(data,player);
 
         if (!player.isActive()) {
-            return ResultAction.noAction("Neni aktivni");
+            return ResultActions.noAction("Neni aktivni");
         }
 
-        if(player.isThreatLock() && !ThreatTools.isSafe(player, 100)) return ResultAction.noAction("Overaggro");
+        if(player.isThreatLock() && !ThreatTools.isSafe(player, 100)) return ResultActions.noAction("Overaggro");
 
-        if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
-                return ResultAction.noAction("Casti");
+        if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.5) {
+                return ResultActions.noAction("Casti");
         }
 
         return standardStrategy.update(player);

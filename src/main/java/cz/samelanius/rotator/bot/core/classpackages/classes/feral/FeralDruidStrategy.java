@@ -1,7 +1,7 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.feral;
 
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 public interface FeralDruidStrategy {
-    ResultAction update(FeralDruidPlayerData player);
+    ResultActions update(FeralDruidPlayerData player);
 }

@@ -1,7 +1,7 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 public interface BalancedDruidStrategy {
-    ResultAction update(BalancedDruidPlayerData player);
+    ResultActions update(BalancedDruidPlayerData player);
 }

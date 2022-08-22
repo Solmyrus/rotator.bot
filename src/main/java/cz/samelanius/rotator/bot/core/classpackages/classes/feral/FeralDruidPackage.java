@@ -6,7 +6,7 @@ import cz.samelanius.rotator.bot.core.classpackages.classes.feral.strategies.Bea
 import cz.samelanius.rotator.bot.core.classpackages.classes.feral.strategies.CatFrontStrategy;
 import cz.samelanius.rotator.bot.core.classpackages.classes.feral.strategies.CatRearStrategy;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 public class FeralDruidPackage extends AbstractClassPackage {
 
@@ -27,23 +27,23 @@ public class FeralDruidPackage extends AbstractClassPackage {
     }
 
     @Override
-    public ResultAction update(RawScreenData data) {
+    public ResultActions update(RawScreenData data) {
         FeralDruidPlayerData player = parser.parseData(data);
-        if(player == null) return ResultAction.noAction();
+        if(player == null) return ResultActions.noAction();
 
         logComData(data,player);
 
         if (!player.isActive()) {
-            return ResultAction.noAction("Neni aktivni");
+            return ResultActions.noAction("Neni aktivni");
         }
 
         if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.2) {
-            return ResultAction.noAction("Casti");
+            return ResultActions.noAction("Casti");
         }
 
         FeralDruidStrategy actualStrategy = getActualStrategy(player);
 
-        if(actualStrategy == null) ResultAction.noAction();
+        if(actualStrategy == null) ResultActions.noAction();
 
         return actualStrategy.update(player);
     }

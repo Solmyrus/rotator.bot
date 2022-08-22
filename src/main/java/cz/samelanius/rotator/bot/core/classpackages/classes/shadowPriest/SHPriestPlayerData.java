@@ -13,5 +13,6 @@ public class SHPriestPlayerData extends PlayerData {
     private TwoConditionSpell vampiricTouch = new TwoConditionSpell(true);
     private TwoConditionSpell shadowWordPain = new TwoConditionSpell(true);
     private TwoConditionSpell mindFly = new TwoConditionSpell(true);
+    private TwoConditionSpell powerWordShield = new TwoConditionSpell(true);
 
 }

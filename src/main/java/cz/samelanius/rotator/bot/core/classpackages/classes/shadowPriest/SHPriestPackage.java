@@ -1,10 +1,10 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.shadowPriest;
 
-import cz.samelanius.rotator.bot.core.ThreatTools;
 import cz.samelanius.rotator.bot.core.classpackages.AbstractClassPackage;
 import cz.samelanius.rotator.bot.core.classpackages.CastType;
 import cz.samelanius.rotator.bot.core.communication.screenparsing.RawScreenData;
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.KeyPress;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 import static cz.samelanius.rotator.bot.core.classpackages.classes.shadowPriest.SHPriestKeybindigs.*;
 
@@ -19,23 +19,24 @@ public class SHPriestPackage extends AbstractClassPackage {
     }
 
     @Override
-    public ResultAction update(RawScreenData data) {
+    public ResultActions update(RawScreenData data) {
         SHPriestPlayerData player = parser.parseData(data);
-        if(player == null) return ResultAction.noAction();
+        if(player == null) return ResultActions.noAction();
         logComData(data,player);
         if (!player.isActive()) {
-            return ResultAction.noAction("Neni aktivni");
+            return ResultActions.noAction("Neni aktivni");
         }
         if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.3) {
-            return ResultAction.noAction("Casti");
+            return ResultActions.noAction("Casti");
         }
 
-        if(player.getVampiricTouch().isCastable()) return ResultAction.keyPress(VAMPIRIC_TOUCH_KEY);
-        if(player.getShadowWordPain().isCastable()) return ResultAction.keyPress(SHADOW_WORD_PAIN_KEY);
-        if(player.getVampiricEmbrace().isCastable()) return ResultAction.keyPress(VAMPIRIC_EMBRACE_KEY);
-        if(player.getMindBlast().isCastable()) return ResultAction.keyPress(MIND_BLAST_KEY);
-        if(player.getMindFly().isCastable()) return ResultAction.keyPress(MIND_FLAY_KEY);
-        return ResultAction.noAction("Neni co delat");
+        if(player.getPowerWordShield().isCastable()) return  ResultActions.action(KeyPress.pressKey(POWER_WORD_SHIELD_KEY));
+        if(player.getVampiricTouch().isCastable()) return  ResultActions.action(KeyPress.pressKey(VAMPIRIC_TOUCH_KEY));
+        if(player.getShadowWordPain().isCastable()) return  ResultActions.action(KeyPress.pressKey(SHADOW_WORD_PAIN_KEY));
+        if(player.getVampiricEmbrace().isCastable()) return  ResultActions.action(KeyPress.pressKey(VAMPIRIC_EMBRACE_KEY));
+        if(player.getMindBlast().isCastable()) return  ResultActions.action(KeyPress.pressKey(MIND_BLAST_KEY));
+        if(player.getMindFly().isCastable()) return  ResultActions.action(KeyPress.pressKey(MIND_FLAY_KEY));
+        return ResultActions.noAction("Neni co delat");
     }
 
     @Override

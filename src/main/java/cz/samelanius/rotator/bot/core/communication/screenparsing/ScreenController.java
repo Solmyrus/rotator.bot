@@ -133,12 +133,10 @@ public class ScreenController {
         return new RGBColor(red, green, blue);
     }
 
-    public void pressAndReleaseKey(int keyCode, int modificatorKeyCode) {
-        System.out.println(sdf.format(new Date()) +  " mackam: " + keyCode + " " + modificatorKeyCode);
-
-        if(modificatorKeyCode > 0) robot.keyPress(modificatorKeyCode);
+    public void pressKey(int keyCode) {
         robot.keyPress(keyCode);
+    }
+    public void releaseKey(int keyCode) {
         robot.keyRelease(keyCode);
-        if(modificatorKeyCode > 0) robot.keyRelease(modificatorKeyCode);
     }
 }

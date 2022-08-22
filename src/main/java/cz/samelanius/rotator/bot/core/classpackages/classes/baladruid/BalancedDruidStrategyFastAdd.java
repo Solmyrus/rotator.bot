@@ -1,6 +1,7 @@
 package cz.samelanius.rotator.bot.core.classpackages.classes.baladruid;
 
-import cz.samelanius.rotator.bot.core.engine.ResultAction;
+import cz.samelanius.rotator.bot.core.engine.actions.KeyPress;
+import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +24,15 @@ public class BalancedDruidStrategyFastAdd implements BalancedDruidStrategy {
     }
 
     @Override
-    public ResultAction update(BalancedDruidPlayerData player) {
+    public ResultActions update(BalancedDruidPlayerData player) {
         if (player.getTarget().getTargetHealth() > 8_000) {
-            if (player.getSpellStarFire().isCastable()) return ResultAction.keyPress(STAR_FIRE_KEY);
+            if (player.getSpellStarFire().isCastable()) return ResultActions.action(KeyPress.pressKey(STAR_FIRE_KEY));
         } else {
-            if (player.getSpellRepeatableMoonFire().isCastable()) return ResultAction.keyPress(MOON_FIRE_KEY);
-            if (player.getSpellStarFire().isCastable()) return ResultAction.keyPress(STAR_FIRE_KEY);
+            if (player.getSpellRepeatableMoonFire().isCastable()) return ResultActions.action(KeyPress.pressKey(MOON_FIRE_KEY));
+            if (player.getSpellStarFire().isCastable()) return ResultActions.action(KeyPress.pressKey(STAR_FIRE_KEY));
         }
 
-        return ResultAction.noAction();
+        return ResultActions.noAction();
     }
 
     public boolean isOnWhitelist(String mobName) {

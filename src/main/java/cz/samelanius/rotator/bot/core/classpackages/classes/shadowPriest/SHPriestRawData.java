@@ -21,6 +21,9 @@ public class SHPriestRawData extends BasePlayerRawData {
     @JsonProperty("pmf")
     private boolean mindFlayPossible;
 
+    @JsonProperty("ppws")
+    private boolean powerWordShieldPossible;
+
     @JsonProperty("amb")
     private boolean mindBlastActive;
 
@@ -36,4 +39,6 @@ public class SHPriestRawData extends BasePlayerRawData {
     @JsonProperty("amf")
     private boolean mindFlayActive;
 
+    @JsonProperty("apws")
+    private boolean powerWordShieldActive;
 }
