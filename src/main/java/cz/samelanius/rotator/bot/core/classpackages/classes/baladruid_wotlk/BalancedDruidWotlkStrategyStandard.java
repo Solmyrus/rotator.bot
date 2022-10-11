@@ -6,27 +6,25 @@ import cz.samelanius.rotator.bot.core.engine.actions.ResultActions;
 import java.awt.event.KeyEvent;
 
 import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid_wotlk.BalancedDruidWotlkCasts.*;
+import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid_wotlk.EclipseMode.AFTER_LUNAR;
+import static cz.samelanius.rotator.bot.core.classpackages.classes.baladruid_wotlk.EclipseMode.AFTER_SOLAR;
 
 public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStrategy {
 
     private static final long CAST_CD = 300;
 
     private long lastCast = 0L;
-    private EclipseMode eclipseMode = EclipseMode.SOLAR;
+    private EclipseMode eclipseMode = AFTER_SOLAR;
 
     @Override
     public ResultActions update(BalancedDruidWotlkPlayerData player) {
-        if (player.isActivateManaPotion()) return castSpell(MANA_POTION);
-        if (player.isActivateDarkRune()) return castSpell(DARK_RUNE);
-        if (player.isActivateTrinket()) return castSpell(TRINKET);
+        if (player.isActivatePotion1()) return castSpell(POTION1);
+        if (player.isActivatePotion2()) return castSpell(POTION2);
         if (player.isActivateInnervate()) return castSpell(INNERVATE);
-        if (player.isActivateDestructionPotion()) return castSpell(DESTRUCTION_POTION);
 
         if(player.getSpellFaerieFire().isCastable()) return castSpell(FAERIE_FIRE);
 
         resolveEclipseMode(player);
-
-        System.out.println(eclipseMode);
 
         switch (eclipseMode) {
             case LUNAR: {
@@ -36,7 +34,6 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
             }
 
             case SOLAR: {
-                if(player.getSpellInsectSwarm().isCastable()) return castSpell(INSECT_SWARM);
                 if(player.getWrath().isCastable()) return castSpell(WRATH);
                 break;
             }
@@ -48,8 +45,6 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
                 break;
             }
             case AFTER_SOLAR: {
-                if(player.getSpellInsectSwarm().isCastable()) return castSpell(INSECT_SWARM);
-                if(player.getSpellMoonFire().isCastable()) return castSpell(MOON_FIRE);
                 if(player.getSpellStarFall().isCastable()) return castSpell(STAR_FALL);
                 if(player.getWrath().isCastable()) return castSpell(WRATH);
                 break;
@@ -62,7 +57,7 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
     private void resolveEclipseMode(BalancedDruidWotlkPlayerData player) {
         if(player.isLunarEclipseAura()) eclipseMode = EclipseMode.LUNAR;
         if(player.isSolarEclipseAura()) eclipseMode = EclipseMode.SOLAR;
-        if(eclipseMode.equals(EclipseMode.LUNAR) && !player.isLunarEclipseAura()) eclipseMode = EclipseMode.AFTER_LUNAR;
+        if(eclipseMode.equals(EclipseMode.LUNAR) && !player.isLunarEclipseAura()) eclipseMode = AFTER_LUNAR;
         if(eclipseMode.equals(EclipseMode.SOLAR) && !player.isSolarEclipseAura()) eclipseMode = EclipseMode.SOLAR;
     }
 
@@ -77,4 +72,7 @@ public class BalancedDruidWotlkStrategyStandard implements BalancedDruidWotlkStr
     }
 
 
+    public void eclipseMode() {
+        eclipseMode = AFTER_SOLAR;
+    }
 }

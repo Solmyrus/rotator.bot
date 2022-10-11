@@ -13,12 +13,11 @@ public enum BalancedDruidWotlkCasts {
     FAERIE_FIRE(FAERIE_FIRE_KEY, null),
     WRATH(WRATH_KEY, null),
     MOON_FIRE(MOON_FIRE_KEY, null),
+
     INSECT_SWARM(INSECT_SWARM_KEY, null),
-    MANA_POTION(MANA_POTION_KEY, null),
-    DARK_RUNE(DARK_RUNE_KEY, null),
-    TRINKET(TRINKET_KEY, null),
-    INNERVATE(INNERVATE_KEY, null),
-    DESTRUCTION_POTION(DESTRUCTION_POTION_KEY, null);
+    POTION1(POTION1_KEY, null),
+    POTION2(POTION2_KEY, null),
+    INNERVATE(INNERVATE_KEY, null);
 
     private int key;
     private Integer modifier;

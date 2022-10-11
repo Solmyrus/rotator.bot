@@ -29,10 +29,9 @@ public class BalancedDruidWotlkPackage extends AbstractClassPackage {
         logComData(data,player);
 
         if (!player.isActive()) {
+            standardStrategy.eclipseMode();
             return ResultActions.noAction("Neni aktivni");
         }
-
-        if(player.isThreatLock() && !ThreatTools.isSafe(player, 100)) return ResultActions.noAction("Overaggro");
 
         if (!player.getCasting().equals(CastType.NONE) && player.getCastingTimeRemaining() > 0.5) {
                 return ResultActions.noAction("Casti");

@@ -26,14 +26,9 @@ public class BalancedDruidWotlkParser extends PlayerParser {
         playerData.setLunarEclipseAura(data.isLunarEclipseAura());
         playerData.setSolarEclipseAura(data.isSolarEclipseAura());
 
-        playerData.setActivateManaPotion(data.isActivateManaPotion());
-        playerData.setActivateDarkRune(data.isActivateDarkRune());
-        playerData.setActivateTrinket(data.isActivateTrinket());
+        playerData.setActivatePotion1(data.isActivatePotion1());
+        playerData.setActivatePotion2(data.isActivatePotion2());
         playerData.setActivateInnervate(data.isActivateInnervate());
-        playerData.setActivateDestructionPotion(data.isActivateDestructionPotion());
-
-        playerData.setDarkRuneCD(data.isDarkRuneCD());
-        playerData.setThreatLock(data.isThreatLock());
 
         return playerData;
 

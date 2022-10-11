@@ -15,19 +15,10 @@ public class BalancedDruidWotlkPlayerData extends PlayerData {
     private TwoConditionSpell spellMoonFire = new TwoConditionSpell(true);
     private TwoConditionSpell spellInsectSwarm = new TwoConditionSpell(true);
 
-
     private boolean lunarEclipseAura;
     private boolean solarEclipseAura;
 
-    private boolean isRunningModeEnable;
-    private boolean isDarkRuneCD;
-
-    private boolean activateManaPotion;
-    private boolean activateDarkRune;
-    private boolean activateTrinket;
-    private boolean activateDrums;
+    private boolean activatePotion1;
+    private boolean activatePotion2;
     private boolean activateInnervate;
-    private boolean activateDestructionPotion;
-
-    private boolean threatLock;
 }

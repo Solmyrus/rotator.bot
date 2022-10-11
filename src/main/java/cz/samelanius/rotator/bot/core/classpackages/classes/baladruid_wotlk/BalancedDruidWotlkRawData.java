@@ -47,24 +47,14 @@ public class BalancedDruidWotlkRawData extends BasePlayerRawData {
 
 
 
-    @JsonProperty("darkRuneCD")
-    private boolean darkRuneCD;
 
-    @JsonProperty("amp")
-    private boolean activateManaPotion;
+    @JsonProperty("ap1")
+    private boolean activatePotion1;
 
-    @JsonProperty("adr")
-    private boolean activateDarkRune;
-
-    @JsonProperty("at")
-    private boolean activateTrinket;
+    @JsonProperty("ap2")
+    private boolean activatePotion2;
 
     @JsonProperty("ai")
     private boolean activateInnervate;
 
-    @JsonProperty("adp")
-    private boolean activateDestructionPotion;
-
-    @JsonProperty("tl")
-    private boolean threatLock;
 }

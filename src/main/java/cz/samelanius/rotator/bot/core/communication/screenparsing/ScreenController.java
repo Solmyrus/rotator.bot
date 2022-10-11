@@ -42,6 +42,8 @@ public class ScreenController {
     }
 
     private String loadDataFromImage() {
+
+
         BufferedImage image = robot.createScreenCapture(selectedArea);
         StringBuilder data = new StringBuilder();
 
